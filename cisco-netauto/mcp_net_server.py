@@ -41,6 +41,14 @@ def run_sandbox_show_command(command: str) -> str:
         return f"SSH Connection Failure: {str(e)}"
 
 if __name__ == "__main__":
-    # Run the server using the standard stdio protocol
-    mcp.run(transport="stdio")
+    # If invoked with --test, run a direct verification test against the sandbox
+    if len(sys.argv) > 1 and sys.argv[1] == "--test":
+        target_cmd = sys.argv[2] if len(sys.argv) > 2 else "show ip interface brief"
+        print(f"🧪 Testing MCP tool against Catalyst 9000 with command: '{target_cmd}'...")
+        result = run_sandbox_show_command(target_cmd)
+        print("\n--- Sandbox Response ---")
+        print(result)
+    else:
+        # Standard MCP Server mode listening on STDIN for JSON-RPC from AI clients
+        mcp.run(transport="stdio")
 
