@@ -11,10 +11,12 @@ load_dotenv()
 # Replace these values with the live dynamic ones from your DevNet Dashboard!
 CISCO_DEVICE = {
     "device_type": "cisco_ios",
-    "host": "://cisco.com",  # Example host
-    "username": "developer",                      # Example username
-    "password": "C1sco12345",                      # Example password
+    "host": "devnetsandboxiosxec9k.cisco.com",  # Fixed: removed leading colon ':'
+    "username": "praveen_",                      # Sandbox username
+    "password": "S7W&3P7jn!*i",                  # Sandbox password
+    "secret": "S7W&3P7jn!*i",                    # Enable secret (matches password)
     "port": 22,
+    "conn_timeout": 30,                          # Allows time for DevNet handshake
 }
 
 def fetch_network_data():
