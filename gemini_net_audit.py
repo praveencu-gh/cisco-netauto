@@ -56,7 +56,7 @@ def analyze_with_ai(raw_cli_text):
     
     # Call the lightning-fast free-tier flash model
     response = client.models.generate_content(
-        model="gemini-2.5-flash",
+        model="gemini-3.8-flash",
         contents=user_prompt,
         config=types.GenerateContentConfig(
             system_instruction=system_prompt,
